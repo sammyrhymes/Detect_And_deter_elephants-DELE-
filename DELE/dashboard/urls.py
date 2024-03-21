@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('', HomeView.as_view(), name='list_tournaments'),  
+    path('send-email/', send_email, name='send_email'),
     # path('create_tournament/', CreateTournament.as_view(), name='create_tournament'),  
     # path('tournament/<int:id>', View_Tournament.as_view(), name='view_tournament'),    
     # path('edit_tournament/<int:id>', EditTournament.as_view(), name='edit_tournament'),     

@@ -7,6 +7,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import SignupForm, LoginForm
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+
 # from .models import Tournament, UserProfile
 
 
@@ -68,6 +72,19 @@ class HomeView(LoginRequiredMixin,View):
 
     def get(self, request): 
         return render(request, self.template_name, { 'title': 'home'})
+
+def send_email(request):
+    if request.method == 'POST':
+        subject = 'notification module success'
+        message = 'Congratulations! your notification module works.'
+        from_email = 'xrt5996@gmail.com'  # Change this to your email address
+        to_email = ['virtualprey@gmail.com']  # Change this to the recipient's email address
+        send_mail(subject, message, from_email, to_email, fail_silently=False)
+        return HttpResponse('Email sent successfully!')
+    else:
+        return render(request, 'dashboard/list_tournaments.html')  # Replace 'your_template.html' with the template containing your button
+
+
 
 
 # class CreateTournament(LoginRequiredMixin,View):

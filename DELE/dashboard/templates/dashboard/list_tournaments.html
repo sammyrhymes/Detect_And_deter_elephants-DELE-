@@ -4,6 +4,10 @@
 <div class="text-center">
     <h1>Welcome to GGgulag Tournaments</h1>
     <p>Find a tornament tot join down below!</p>
+    <form action="{% url 'dashboard:send_email' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Send Email</button>
+    </form>
 </div>
     {% if tournaments %}
     <div class=" row"> 
